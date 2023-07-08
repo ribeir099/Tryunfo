@@ -2,6 +2,7 @@
   "name": "tryunfo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ribeir099.github.io/Tryunfo/",
   "engines": {
     "node": "16"
   },
