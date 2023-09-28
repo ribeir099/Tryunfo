@@ -16,7 +16,7 @@ const data = [
     cardAttr1: '90',
     cardAttr2: '70',
     cardAttr3: '50',
-    cardRare: 'normal',
+    cardRare: 'Normal',
     cardTrunfo: false,
   },
   {
@@ -32,7 +32,7 @@ const data = [
     cardAttr1: '90',
     cardAttr2: '60',
     cardAttr3: '60',
-    cardRare: 'normal',
+    cardRare: 'Normal',
     cardTrunfo: false,
   },
 ];

@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import SavedCards from './data';
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +18,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      cards: [],
+      cards: SavedCards,
     };
   }
 
@@ -74,7 +75,7 @@ class App extends React.Component {
     } = this.state;
     const possiblePoints = 210;
     const totalPoints = possiblePoints
-    - (parseInt(cardAttr1, 10) + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10));
+      - (parseInt(cardAttr1, 10) + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10));
     const maxAtributePoints = 90;
     const maxPoints = (totalPoints >= 0
       && (cardAttr1 <= maxAtributePoints && cardAttr1 >= 0)
@@ -127,36 +128,50 @@ class App extends React.Component {
       cards,
     } = this.state;
     return (
-      <div id="create-card">
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-          filedForms={ this.filedForms }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          deleteCard={ this.deleteCard }
-        />
-        <div id="baralho">
+      <main className="bg-gray-200">
+        <h1
+          className="
+        flex
+        items-center
+        justify-center bg-green-800 h-20 text-white font-normal text-4xl mb-10"
+        >
+          Tryunfo
+
+        </h1>
+        <div className="flex justify-evenly mb-10">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            filedForms={ this.filedForms }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            deleteCard={ this.deleteCard }
+          />
+        </div>
+        <div id="baralho" className="flex flex-col justify-center align-center">
           {cards.map((carta) => (
-            <div className="card-baralho" key={ carta.cardName }>
+            <div
+              className="flex items-center flex-col"
+              key={ carta.cardName }
+            >
               <Card
                 cardName={ carta.cardName }
                 cardDescription={ carta.cardDescription }
@@ -169,6 +184,8 @@ class App extends React.Component {
                 deleteCard={ this.deleteCard }
               />
               <button
+                className="
+                bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                 type="button"
                 data-testid="delete-button"
                 onClick={ () => this.deleteCard(carta.cardName) }
@@ -178,7 +195,7 @@ class App extends React.Component {
             </div>
           ))}
         </div>
-      </div>
+      </main>
     );
   }
 }

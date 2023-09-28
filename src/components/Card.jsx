@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 class Card extends React.Component {
   render() {
@@ -14,23 +14,19 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
     return (
-      <div>
-        <p data-testid="name-card">{ cardName }</p>
-        <img
-          data-testid="image-card"
-          src={ cardImage }
-          alt={ cardName }
-          width="300px"
-          height="400px"
-        />
-        <p data-testid="description-card">{ cardDescription }</p>
+      <div className="flex flex-col items-center border-8 border-white m-10 w-1/4">
+        <div className="bg-green-800 w-full p-5">
+          <img src={cardImage} alt={cardName} className="w-1/2 m-auto" />
+          <p className="h-10 bg-green-950 text-white flex items-center justify-center font-bold mt-5">{cardName}</p>
+          <p className="mb-5 bg-gray-200 p-5 text-sm">{cardDescription}</p>
 
-        <p data-testid="attr1-card">{ cardAttr1 }</p>
-        <p data-testid="attr2-card">{ cardAttr2 }</p>
-        <p data-testid="attr3-card">{ cardAttr3 }</p>
+          <p className="bg-gray-200 px-2 my-5 rounded-md">Inteligência: {cardAttr1}</p>
+          <p className="bg-gray-200 px-2 my-5 rounded-md">Força: {cardAttr2}</p>
+          <p className="bg-gray-200 px-2 my-5 rounded-md">Velocidade: {cardAttr3}</p>
 
-        <p data-testid="rare-card">{ cardRare }</p>
-        {cardTrunfo ? (<p data-testid="trunfo-card">Super Trunfo</p>) : ''}
+          <p className="bg-green-950 text-white p-2 rounded font-bold w-fit flex m-auto">{cardRare}</p>
+          {cardTrunfo ? <p>Super Trunfo</p> : ""}
+        </div>
       </div>
     );
   }
